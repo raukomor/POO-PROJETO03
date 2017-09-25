@@ -7,20 +7,20 @@ import java.util.ArrayList;
  * @author hhornos
  */
 public class Bd {
-    private static ArrayList<PessoaFisica> cliente;
-    private static ArrayList<PessoaJuridica> fornecedor;
+    private static ArrayList<PessoaFisica> clientes;
+    private static ArrayList<PessoaJuridica> fornecedores;
     
     public static ArrayList<PessoaFisica> getClientes() {
-        if (cliente==null) {
-            cliente = new ArrayList<>();
+        if (clientes==null) {
+            clientes = new ArrayList<>();
         }
-        return cliente;
+        return clientes;
     }
     
     public static ArrayList<PessoaJuridica> getFornecedores() {
-        if (fornecedor==null) {
-            fornecedor = new ArrayList<>();
+        if (fornecedores==null) {
+            fornecedores = new ArrayList<>();
         }
-        return fornecedor;
+        return fornecedores;
     }
 }
