@@ -59,7 +59,9 @@
                     Bd.getFornecedores().remove(i);
                 }
             }catch(Exception ex){ %>
-            <h3>Erro ao processar o comando: <%=ex.getMessage()%></h3>
+                <script>
+                    alert(<%=ex.getMessage()%>);
+                </script>
             <%}%>
         <h1>Cadastros efetuados</h1>
         <table border="1">

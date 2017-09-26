@@ -8,29 +8,58 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@page import="app.Bd"%>
-        <%@page import="app.Pessoa"%>
-        <%@page import="app.PessoaJuridica"%>
+        <%@page import="br.com.fatecpg.cadastro.Bd"%>
+        <%@page import="br.com.fatecpg.cadastro.Pessoa"%>
+        <%@page import="br.com.fatecpg.cadastro.PessoaJuridica"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <%  int i = Integer.parseInt(request.getParameter("i"));
+        <%  
+            int i = Integer.parseInt(request.getParameter("i"));
             PessoaJuridica fornecedor = Bd.getFornecedores().get(i);
             try{
+                boolean isError = false;
                 if(request.getParameter("editar") != null){
-                    fornecedor = Bd.getFornecedores().remove(i);
-                    fornecedor.setNome(request.getParameter("name"));
-                    fornecedor.setEmail(request.getParameter("email"));
-                    fornecedor.setTelefone(request.getParameter("telephone"));
-                    fornecedor.setEndereco(request.getParameter("endereco"));
-                    fornecedor.setRazaoSocial(request.getParameter("razaoSocial"));
-                    fornecedor.setCnpj(request.getParameter("cnpj"));
-                    Bd.getFornecedores().add(i, fornecedor);
+                    if (fornecedor.setNome(
+                            request.getParameter("name")) == false)
+                        isError = true;
+                    
+                    if (fornecedor.setCnpj(
+                            request.getParameter("cnpj")) == false)
+                        isError = true;
+                    
+                    if (fornecedor.setEmail(
+                            request.getParameter("email")) == false)
+                        isError = true;
+                    
+                    if (fornecedor.setEndereco(
+                            request.getParameter("endereco")) == false)
+                        isError = true;
+                    
+                    if (fornecedor.setTelefone(
+                            request.getParameter("telephone")) == false)
+                        isError = true;
+                    
+                    if (fornecedor.setRazaoSocial(
+                            request.getParameter("razaoSocial")) == false)
+                        isError = true;
+                    
+
+                    if (isError) {
+                        for (String erroMessage : fornecedor.getMessageErro()) {
+                            out.print("<script>");
+                            out.print("alert('" + erroMessage + "');");
+                            out.print("</script>");
+                        }
+                    } else {
+                        fornecedor = Bd.getFornecedores().remove(i);
+                        Bd.getFornecedores().add(i, fornecedor);
+                    }
                 }
             }catch(Exception ex){%>
                 <script>
-                    window.alert(<%=fornecedor.getUltimoErro()%>);
+                    alert(<%=ex.getMessage()%>);
                 </script>
             <%}%>
         <%if(request.getParameter("editar") == null){%>
