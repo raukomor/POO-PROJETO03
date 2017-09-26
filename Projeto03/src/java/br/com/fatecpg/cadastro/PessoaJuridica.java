@@ -1,4 +1,6 @@
-package app;
+package br.com.fatecpg.cadastro;
+
+import app.ValidaDados;
 
 /**
  *
@@ -7,6 +9,8 @@ package app;
 public class PessoaJuridica extends Pessoa{
     private String razaoSocial;
     private String cnpj;
+    
+    
 
     public String getRazaoSocial() {
         return razaoSocial;
@@ -18,7 +22,6 @@ public class PessoaJuridica extends Pessoa{
                     + "caracter");
             return false;
         }
-        super.setUltimoErro("");
         this.razaoSocial = razaoSocial;
         return true;
     }
@@ -29,10 +32,12 @@ public class PessoaJuridica extends Pessoa{
 
     public boolean setCnpj(String cnpj) {
         if (cnpj.isEmpty()) {
-            super.setUltimoErro("campo cjpj incorreto");
+            super.setUltimoErro("Por favor digite um CNPJ, está em branco!!!");
+            return false;
+        } else if (ValidaDados.Cnpj(cnpj) == false) {
+            super.setUltimoErro("Número de CNPJ inválido!!!");
             return false;
         }
-        super.setUltimoErro("");
         this.cnpj = cnpj;
         return true;
     }
