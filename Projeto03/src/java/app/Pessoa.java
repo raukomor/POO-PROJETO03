@@ -8,6 +8,7 @@ public abstract class Pessoa {
     private String nome;
     private String email;
     private String telefone;
+    private String endereco;
     private String lastError;
 
     public String getNome() {
@@ -50,6 +51,20 @@ public abstract class Pessoa {
         }
         this.lastError = "";
         this.telefone = telefone;
+        return true;
+    }
+    
+    public String getEndereco() {
+        return endereco;
+    }
+    
+    public boolean setEndereco(String endereco) {
+        if (endereco.isEmpty()) {
+            this.lastError = "campo endereço incorreto";
+            return false;
+        }
+        this.lastError = "";
+        this.endereco = endereco;
         return true;
     }
     
