@@ -52,11 +52,15 @@
                             out.print("</script>");
                         }
                     } else {
-                        Bd.getFornecedores().add(fornecedor);
+                        if(!Bd.addFornecedor(fornecedor)){
+                            out.print("<script>");
+                            out.print("alert('Já existe um cadastro com este CNPJ');");
+                            out.print("</script>");
+                        }
                     }
                 }else if(request.getParameter("remove") != null){
                     int i = Integer.parseInt(request.getParameter("i"));
-                    Bd.getFornecedores().remove(i);
+                    Bd.removeFornecedor(i);
                 }
             }catch(Exception ex){ %>
                 <script>
@@ -76,8 +80,8 @@
                 <th>-</th>
                 <th>-</th>
             </tr>
-            <% for(int i = 0; i < Bd.getFornecedores().size(); i++){ %>
-            <% PessoaJuridica fornecedor = Bd.getFornecedores().get(i); %>
+            <% for(int i = 0; i < Bd.totalCadastrosFornecedor(); i++){ %>
+            <% PessoaJuridica fornecedor = Bd.obterFornecedor(i); %>
             <tr>
                 <td><%=i%></td>
                 <td><%=fornecedor.getNome()%></td>
@@ -87,7 +91,7 @@
                 <td><%=fornecedor.getRazaoSocial()%></td>
                 <td><%=fornecedor.getCnpj()%></td>
                 <td>
-                    <form method="post" action="editFornecedor.jsp">
+                    <form method="post" action="EditarFornecedor.jsp">
                         <input type="hidden" name="i" value="<%=i%>"/>
                         <input type="submit" name="edit" value="Editar"/>
                     </form>

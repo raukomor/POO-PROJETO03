@@ -17,35 +17,41 @@
     <body>
         <%  
             int i = Integer.parseInt(request.getParameter("i"));
-            PessoaJuridica fornecedor = Bd.getFornecedores().get(i);
+            PessoaJuridica fornecedor = Bd.obterFornecedor(i);
+            boolean isNotCompleted = false;
             try{
                 boolean isError = false;
                 if(request.getParameter("editar") != null){
                     if (fornecedor.setNome(
-                            request.getParameter("name")) == false)
+                            request.getParameter("name")) == false){
                         isError = true;
-                    
+                        isNotCompleted = true;
+                    }
                     if (fornecedor.setCnpj(
-                            request.getParameter("cnpj")) == false)
+                            request.getParameter("cnpj")) == false){
                         isError = true;
-                    
+                        isNotCompleted = true;
+                    }
                     if (fornecedor.setEmail(
-                            request.getParameter("email")) == false)
+                            request.getParameter("email")) == false){
                         isError = true;
-                    
+                        isNotCompleted = true;
+                    }
                     if (fornecedor.setEndereco(
-                            request.getParameter("endereco")) == false)
+                            request.getParameter("endereco")) == false){
                         isError = true;
-                    
+                        isNotCompleted = true;
+                    }
                     if (fornecedor.setTelefone(
-                            request.getParameter("telephone")) == false)
+                            request.getParameter("telephone")) == false){
                         isError = true;
-                    
+                        isNotCompleted = true;
+                    }
                     if (fornecedor.setRazaoSocial(
-                            request.getParameter("razaoSocial")) == false)
+                            request.getParameter("razaoSocial")) == false){
                         isError = true;
-                    
-
+                        isNotCompleted = true;
+                    }
                     if (isError) {
                         for (String erroMessage : fornecedor.getMessageErro()) {
                             out.print("<script>");
@@ -53,8 +59,8 @@
                             out.print("</script>");
                         }
                     } else {
-                        fornecedor = Bd.getFornecedores().remove(i);
-                        Bd.getFornecedores().add(i, fornecedor);
+                        Bd.editFornecedor(i, fornecedor);
+                        
                     }
                 }
             }catch(Exception ex){%>
@@ -82,9 +88,12 @@
                 <input type="submit" name="editar" value="Alterar"/>
             </form>
         </fieldset>
+        <%}else if(isNotCompleted){%>
+            <h1>Ocorreu um erro ao editar seus dados.</h1>
+            <a href="crudFornecedor.jsp">Voltar</a>
         <%}else{%>
-        <h1>Alteração efetuada com sucesso!</h1>
-        <a href="crudFornecedor.jsp">Voltar</a>
-        <%}%>
+            <h1>Alteração efetuada com sucesso!</h1>
+            <a href="crudFornecedor.jsp">Voltar</a>
+        <<%}%>
     </body>
 </html>
