@@ -44,4 +44,26 @@ public class Bd {
     public static PessoaJuridica obterFornecedor(int i){
         return Bd.getFornecedores().get(i);
     }
+        public static boolean addPessoaFisica(PessoaFisica pessoaFisica){
+        for(PessoaFisica f : clientes){
+            if(f.getCpf().equals(pessoaFisica.getCpf())){
+                return false;
+            }
+        }
+        Bd.getClientes().add(pessoaFisica);
+        return true;
+    }
+    public static void editPessoaFisica(int indice, PessoaFisica pessoaFisica){
+        Bd.getClientes().remove(indice);
+        Bd.getClientes().add(indice, pessoaFisica);
+    }
+    public static void removePessoaFisica(int indice){
+        Bd.getClientes().remove(indice);
+    }
+    public static Integer totalCadastrosPessoaFisica(){
+        return Bd.getClientes().size();
+    }
+    public static PessoaFisica obterPessoaFisica(int i){
+        return Bd.getClientes().get(i);
+    }
 }

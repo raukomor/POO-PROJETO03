@@ -1,90 +1,72 @@
 <%-- 
-    Document   : CadastroCliente
-    Created on : 25/09/2017, 23:53:34
-    Author     : rodri
+    Document   : crudFornecedor
+    Created on : 26/09/2017, 00:25:23
+    Author     : Muca
 --%>
 
-<%@page import="javax.swing.JOptionPane"%>
-<%@page import="app.ValidaDados"%>
-<%@page import="br.com.fatecpg.cadastro.Bd"%>
-<%@page import="br.com.fatecpg.cadastro.PessoaFisica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <%@page import="br.com.fatecpg.cadastro.Bd"%>
+        <%@page import="br.com.fatecpg.cadastro.Pessoa"%>
+        <%@page import="br.com.fatecpg.cadastro.PessoaFisica"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Controle de Fornecedores</title>
     </head>
-    <body >
-        
-        <h1>Cadastro de Clientes</h1>
-        <%
-        try{
-            if(request.getParameter("add") != null){
-                PessoaFisica c = new PessoaFisica();
-                //Bd bd = new Bd();
+    <body>
+        <% 
+            try{
                 boolean isError = false;
-                String nome = request.getParameter("txtNome");
-                String cpf = request.getParameter("txtCpf");
-                String rg = request.getParameter("txtRg");
-                String email = request.getParameter("txtEmail");
-                String telefone = request.getParameter("txtTelefone");
-                String endereco = request.getParameter("txtEndereco");
-                
-                
-                
-                if(!c.setNome(nome)){
-                      isError = true;
-                      
-                }
+                if(request.getParameter("add") != null){
+                    PessoaFisica pessoaFisica = new PessoaFisica();
+                    if (pessoaFisica.setNome(
+                            request.getParameter("name")) == false)
+                        isError = true;
+                    
+                    if (pessoaFisica.setRg(
+                            request.getParameter("rg")) == false)
+                        isError = true;
+                    
+                    if (pessoaFisica.setEmail(
+                            request.getParameter("email")) == false)
+                        isError = true;
+                    
+                    if (pessoaFisica.setEndereco(
+                            request.getParameter("endereco")) == false)
+                        isError = true;
+                    
+                    if (pessoaFisica.setTelefone(
+                            request.getParameter("telephone")) == false)
+                        isError = true;
+                    
+                    if (pessoaFisica.setCpf(
+                            request.getParameter("cpf")) == false)
+                        isError = true;
+                    
 
-                if(!c.setCpf(cpf)){
-                    isError = true;
-                }
-//
-                if(!c.setRg(rg)){
-                    isError = true;
-                }
-//
-                if(!c.setEmail(email)){
-                    isError = true;
-                }
-//
-                if(!c.setTelefone(telefone)){
-                    isError = true;
-                }
-//
-                if(!c.setEndereco(endereco)){
-                    isError = true;
-                }
-                
-                    
-//                c.setNome(nome);
-//                c.setCpf(cpf);
-//                c.setRg(rg);
-//                c.setEmail(email);
-//                c.setTelefone(telefone);
-//                c.setEndereco(endereco);  
-                    
                     if (isError) {
-                        out.print("<script type=\"text/javascript\">");
-                        out.print("alert(");
-                        for (String erroMessage : c.getMessageErro()) {
-                            
-                             //out.print(erroMessage + "");
-                               %>"<%=erroMessage%>" + "\n" +<%  
-                            
+                        for (String erroMessage : pessoaFisica.getMessageErro()) {
+                            out.print("<script>");
+                            out.print("alert('" + erroMessage + "');");
+                            out.print("</script>");
                         }
-                        out.print("\"\");</script>");
                     } else {
-                        
-                        Bd.getClientes().add(c);
+                        if(!Bd.addPessoaFisica(pessoaFisica)){
+                            out.print("<script>");
+                            out.print("alert('Já existe um cadastro com este CPF');");
+                            out.print("</script>");
+                        }
                     }
-            }
-        %>
-        <%}catch(Exception ex){%>
-        <div>*Erro ao processar o comando: <%=ex.getMessage()%></div>
-        <%}%>
+                }else if(request.getParameter("remove") != null){
+                    int i = Integer.parseInt(request.getParameter("i"));
+                    Bd.removePessoaFisica(i);
+                }
+            }catch(Exception ex){ %>
+                <script>
+                    alert(<%=ex.getMessage()%>);
+                </script>
+            <%}%>
         <h1>Cadastros efetuados</h1>
         <table border="1">
             <tr>
@@ -93,22 +75,23 @@
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Endereço</th>
-                <th>CPF</th>
                 <th>RG</th>
-                
+                <th>CPF</th>
+                <th>-</th>
+                <th>-</th>
             </tr>
-            <% for(int i = 0; i < Bd.getClientes().size(); i++){ %>
-            <% PessoaFisica pessoaFisica = Bd.getClientes().get(i); %>
+            <% for(int i = 0; i < Bd.totalCadastrosPessoaFisica(); i++){ %>
+            <% PessoaFisica pessoaFisica = Bd.obterPessoaFisica(i); %>
             <tr>
                 <td><%=i%></td>
                 <td><%=pessoaFisica.getNome()%></td>
                 <td><%=pessoaFisica.getEmail()%></td>
                 <td><%=pessoaFisica.getTelefone()%></td>
                 <td><%=pessoaFisica.getEndereco()%></td>
-                <td><%=pessoaFisica.getCpf()%></td>
                 <td><%=pessoaFisica.getRg()%></td>
+                <td><%=pessoaFisica.getCpf()%></td>
                 <td>
-                    <form method="post" action="editFornecedor.jsp">
+                    <form method="post" action="EditarCliente.jsp">
                         <input type="hidden" name="i" value="<%=i%>"/>
                         <input type="submit" name="edit" value="Editar"/>
                     </form>
@@ -122,30 +105,24 @@
             </tr>
             <%}%>
         </table>
-        
-            <fieldset id="teste">
-                <legend>Cadastro de Clientes</legend>
-                <form >
-                    <label for="txtNome" >Nome:</label></br>
-                    <input type="text" name="txtNome" autofocus</br></br>
-                    <label for="txtCpf" >CPF:</label></br>
-                    <input type="text" name="txtCpf"></br></br>
-                    <label for="txtRg" >RG:</label></br>
-                    <input type="text" name="txtRg"></br></br>
-                    <label for="txtEmail" >E-Mail:</label></br>
-                    <input type="text" name="txtEmail"></br></br>
-                    <label for="txtTelefone" >Telefone:</label></br>
-                    <input type="text" name="txtTelefone"></br></br>
-                    <label for="textEndereco" >Endereço:</label></br>
-                    <input type="text" name="txtEndereco"></br></br>
-                    </br>
-                    <input type="submit" name="add"  value="Cadastrar"></br>
-                </form>
-            </fieldset>
-            
-           <script type="text/javascript" defer="defer">
-                //alert(document.getElementById("teste").offsetTop);
-                //window.scrollTo(0,document.getElementById("teste").offsetTop);
-            </script> 
+        <h1>Cadastrar Pessoa Fisica</h1>
+        <fieldset>
+            <legend>Adicionar Pessoa Fisica</legend>
+            <form>
+                <label for="name">Digite seu nome: </label><br/>
+                <input type="text" required name="name"/><br/>
+                <label for="email">Digite seu email: </label><br/>
+                <input type="email" required name="email"/><br/>
+                <label for="telephone">Digite seu telefone: </label><br/>
+                <input type="number" required name="telephone"/><br/>
+                <label for="endereco">Digite seu endereço: </label><br/>
+                <input type="text" required name="endereco"/><br/>
+                <label for="rg">Digite seu RG: </label><br/>
+                <input type="text" required name="rg"/><br/>
+                <label for="cpf">Digite seu CPF: </label><br/>
+                <input type="text" required name="cpf"/><br/>
+                <input type="submit" name="add" value="Cadastrar"/>
+            </form>
+        </fieldset>
     </body>
 </html>
