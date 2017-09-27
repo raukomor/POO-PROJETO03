@@ -104,13 +104,13 @@
                 <td>
                     <form method="post" action="EditarFornecedor.jsp">
                         <input type="hidden" name="i" value="<%=i%>"/>
-                        <input type="submit" name="edit" value="Editar"/>
+                        <input class="btn btn-default" type="submit" name="edit" value="Editar"/>
                     </form>
                 </td>
                 <td>
                     <form>
                         <input type="hidden" name="i" value="<%=i%>"/>
-                        <input type="submit" name="remove" value="Excluir"/>
+                        <input class="btn btn-default" type="submit" name="remove" value="Excluir"/>
                     </form>
                 </td>
             </tr>

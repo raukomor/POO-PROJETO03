@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>Tabela Price</title>
+        <title>Fatec PG</title>
         <!--<link rel="icon" href="res/images/LogoTransp.png">-->
         <!-- Bootstrap -->
         <!--<link href="res/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>-->
@@ -52,25 +52,25 @@
 
 <div class="row" id="equipe"><br>
 
-<div class="col-md-3">
+<!--<div class="col-md-3">
   <img src="images/alan.jpg" alt="Boss" style="width:45%" class="img-circle ">
   <h3>Allan</h3>
   <p></p>
-</div>
+</div>-->
 
-<div class="col-md-3">
+<div class="col-md-4">
   <img src="images/henrique.jpg" alt="Boss" style="width:45%" class="img-circle">
   <h3>Henrique</h3>
   <p></p>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
   <img src="images/murilo.jpg" alt="Boss" style="width:45%" class="img-circle">
   <h3>Murilo Xavier</h3>
   <p></p>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
   <img src="images/rodrigo.png" alt="Boss" style="width:45%" class="img-circle" border="1">
   <h3>Rodrigo Corneta</h3>
   <p></p>
