@@ -18,12 +18,15 @@
         <!-- Bootstrap -->
         <!--<link href="res/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>-->
         <!--<link href="res/styles/style.css" rel="stylesheet" type="text/css"/>-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
         <script src="js/app.js" defer="defer"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.css" rel="stylesheet">
         
-        <title>JSP Page</title>
+        <script src="js/jquery-3.2.1.js" defer="defer"></script>
+        <script src="js/bootstrap.min.js" defer="defer"></script>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>

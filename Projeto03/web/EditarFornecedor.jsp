@@ -12,10 +12,15 @@
         <%@page import="br.com.fatecpg.cadastro.Pessoa"%>
         <%@page import="br.com.fatecpg.cadastro.PessoaJuridica"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        
+        <script src="js/jquery-3.2.1.js" defer="defer"></script>
+        <script src="js/bootstrap.min.js" defer="defer"></script>
+        <title>Controle Fornecedor</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
