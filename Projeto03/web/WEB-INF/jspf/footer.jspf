@@ -46,6 +46,6 @@ body {
 </style>
     <footer class="footer">
       <div class="container">
-        <span class="text-muted">ALGUMA COISA AQUI .INC.</span>
+        <span class="text-muted" style="display:table;margin:0 auto;">&copy; 2017 FATEC Praia Grande &middot; <a href="#">Privacidade</a> &middot; <a href="#">Termos</a></span>
       </div>
     </footer>

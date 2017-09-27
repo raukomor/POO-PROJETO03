@@ -6,7 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
+    
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
@@ -18,39 +21,28 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/app.js" defer="defer"></script>
+        
         <title>JSP Page</title>
     </head>
     <body>
         <%@include file="WEB-INF/jspf/header.jspf" %>
 
 <!-- Promo Section - "We know design" -->
-<div class="container-fluid" style="padding:108px; ">
+<div class="container-fluid" id="sobre" style="padding:108px; ">
   <div class="row">
     <div class="col-md-6">
-      <h3>We know design.</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
-      <p><a href="#work" class=""><i class="fa fa-th">&nbsp;</i> View Our Works</a></p>
+      <h3>Sobre o Projeto.</h3>
+      <p>Este site provê o cadastramento de clientes e fornecedores, possibilitando a suas respectivas edições e exclusões.</p>
+      
     </div>
     <div class="col-md-6">
-        <img class="img-rounded" src="images/murilo.jpg" alt="Buildings" width="500" height="294" >
+        <img class="img-rounded" src="images/content.jpg" alt="Buildings" width="600" height="294" >
     </div>
   </div>
 </div>
 
-<!-- Promo Section - "We know design" -->
-<div class="container-fluid" style="padding:108px;">
-  <div class="row">
-    <div class="col-md-6">
-        <img class="img-rounded" src="images/murilo.jpg" alt="Buildings" width="500" height="294" >
-    </div>  
-    <div class="col-md-6">
-        <h3 style="">We know design.</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
-      <p><a href="#work" class=""><i class="fa fa-th">&nbsp;</i> View Our Works</a></p>
-    </div>
-    
-  </div>
-</div>
+
 
         
 <!-- Team Container -->
@@ -58,36 +50,34 @@
 <h2>NOSSA EQUIPE</h2>
 <p>Conheça a nossa equipe:</p>
 
-<div class="row"><br>
+<div class="row" id="equipe"><br>
 
 <div class="col-md-3">
-  <img src="images/rodrigo.png" alt="Boss" style="width:45%" class="img-circle ">
+  <img src="images/alan.jpg" alt="Boss" style="width:45%" class="img-circle ">
   <h3>Allan</h3>
-  <p>Web Designer</p>
+  <p></p>
 </div>
 
 <div class="col-md-3">
-  <img src="images/rodrigo.png" alt="Boss" style="width:45%" class="img-circle">
+  <img src="images/henrique.jpg" alt="Boss" style="width:45%" class="img-circle">
   <h3>Henrique</h3>
-  <p>Support</p>
+  <p></p>
 </div>
 
 <div class="col-md-3">
   <img src="images/murilo.jpg" alt="Boss" style="width:45%" class="img-circle">
   <h3>Murilo Xavier</h3>
-  <p>Boss man</p>
+  <p></p>
 </div>
 
 <div class="col-md-3">
   <img src="images/rodrigo.png" alt="Boss" style="width:45%" class="img-circle" border="1">
   <h3>Rodrigo Corneta</h3>
-  <p>Fixer</p>
+  <p></p>
 </div>
 
 </div>
 </div>
-   
-            
         <%@include file="WEB-INF/jspf/footer.jspf" %>
     </body>
 </html>
