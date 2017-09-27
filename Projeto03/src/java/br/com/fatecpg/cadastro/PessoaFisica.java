@@ -23,7 +23,6 @@ public class PessoaFisica extends Pessoa{
             return false;
         }
         
-        super.setUltimoErro("");
         this.cpf = cpf;
         return true;
     }
@@ -37,7 +36,6 @@ public class PessoaFisica extends Pessoa{
             super.setUltimoErro("Por favor digite um RG, está em branco!!!");
             return false;
         }
-        super.setUltimoErro("");
         this.rg = rg;
         return true;
     }
