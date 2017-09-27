@@ -90,10 +90,10 @@
         </fieldset>
         <%}else if(isNotCompleted){%>
             <h1>Ocorreu um erro ao editar seus dados.</h1>
-            <a href="crudFornecedor.jsp">Voltar</a>
+            <a href="CadastroFornecedor.jsp">Voltar</a>
         <%}else{%>
             <h1>Alteração efetuada com sucesso!</h1>
-            <a href="crudFornecedor.jsp">Voltar</a>
+            <a href="CadastroFornecedor.jsp">Voltar</a>
         <<%}%>
     </body>
 </html>

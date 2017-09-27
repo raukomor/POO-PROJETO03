@@ -1,5 +1,4 @@
 package br.com.fatecpg.cadastro;
-import app.ValidaDados;
 import java.util.ArrayList;
 
 /**
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 public class Bd {
     private static ArrayList<PessoaFisica> clientes;
     private static ArrayList<PessoaJuridica> fornecedores;
+    
     private static ArrayList<PessoaFisica> getClientes() {
         if (clientes==null) {
             clientes = new ArrayList<>();
@@ -23,8 +23,8 @@ public class Bd {
         return fornecedores;
     }
     public static boolean addFornecedor(PessoaJuridica fornecedor){
-        for(PessoaJuridica objeto : fornecedores){
-            if(objeto.getCnpj().equals(fornecedor.getCnpj())){
+        for (PessoaJuridica f : getFornecedores()){
+            if(f.getCnpj().equals(fornecedor.getCnpj())){
                 return false;
             }
         }
